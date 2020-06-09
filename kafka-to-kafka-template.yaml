@@ -1,0 +1,23 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kafka-to-kafka-REPLACE_WITH_NUM
+spec:
+  selector:
+    matchLabels:
+      app: kafka-to-kafka-REPLACE_WITH_NUM
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: kafka-to-kafka-REPLACE_WITH_NUM
+    spec:
+      containers:
+      - name: kafka-to-kafka-REPLACE_WITH_NUM
+        image: david62243/sparktestapps:v0.2
+        command:
+          - sh
+          - -c
+          - "java -Xmx6g -cp target/sparktestapps.jar org.jennings.sparktestapps.scala.kafka.KafkaToKafka a4iot-resources-kafka.westus2.cloudapp.azure.com:9092 planes1x5000 gateway-cp-kafka.a4iot-cqvgkj9zrnkn9bcu-services:9092 templanes-REPLACE_WITH_NUM local[8] 1"
+        imagePullPolicy: Always

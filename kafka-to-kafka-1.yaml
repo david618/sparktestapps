@@ -1,0 +1,23 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kafka-to-kafka-1
+spec:
+  selector:
+    matchLabels:
+      app: kafka-to-kafka-1
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: kafka-to-kafka-1
+    spec:
+      containers:
+      - name: kafka-to-kafka-1
+        image: david62243/sparktestapps:v0.2
+        command:
+          - sh
+          - -c
+          - "java -Xmx6g -cp target/sparktestapps.jar org.jennings.sparktestapps.scala.kafka.KafkaToKafka a4iot-resources-kafka.westus2.cloudapp.azure.com:9092 planes1x500 gateway-cp-kafka.a4iot-cqvgkj9zrnkn9bcu-services:9092 templanes-1 local[8] 1"
+        imagePullPolicy: Always

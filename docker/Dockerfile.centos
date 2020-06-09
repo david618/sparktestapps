@@ -1,0 +1,8 @@
+#docker build -f docker/Dockerfile.centos -t david62243/sparktestapps:v0.1 .
+
+FROM centos:7.6.1810
+
+RUN yum install -y java-1.8.0-openjdk vim tmux
+
+COPY target/lib /opt/sparktestapps/target/lib
+COPY target/sparktestapps.jar /opt/sparktestapps/target/sparktestapps.jar
