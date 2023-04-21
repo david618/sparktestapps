@@ -15,7 +15,7 @@
         <mainClass>org.jennings.sparktestapps.java.TestJava</mainClass>
         <projectname>sparktestapps</projectname>
 
-        <spark.version>2.4.4</spark.version>
+        <spark.version>3.4.0</spark.version>
         <scala.dep.version>2.12</scala.dep.version>
 
 
